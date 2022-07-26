@@ -1,0 +1,33 @@
+name: Starlink Monitor
+version: "1.0"
+panel_icon: "mdi:satellite-uplink"
+panel_title: Starlink-Monitor
+slug: starlink-monitor
+description: Basic monitoring web app for Starlink
+url: "https://github.com/randominternetuser/hass-addons"
+startup: application
+boot: auto
+webui: "http://[HOST]:[PORT:3636]/"
+watchdog: "http://[HOST]:[PORT:3636]/"
+ingress: true
+ingress_port: 3636
+ingress_entry: /
+panel_admin: false
+ports:
+  80/tcp: 3636
+ports_description:
+  80/tcp: Web interface (Not required for Hass.io Ingress)
+host_network: false
+tmpfs: true
+full_access: false
+environment:
+  STARLINK_URI: "192.168.100.1:9200"
+  STARLINK_REFRESH_SECS: 1
+  STARLINK_HISTORY_REFRESH_SECS: 30
+  BROADCAST_RATE_SECS: 3
+  SPEEDTEST_REFRESH_MINS: 30
+  BUFFER_SIZE_HOURS: 72
+options: {}
+schema: {}
+arch:
+  - amd64
